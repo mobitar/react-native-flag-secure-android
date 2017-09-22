@@ -4,11 +4,6 @@
 package com.kristiansorens.flagsecure;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.view.WindowManager;
 
 import com.facebook.react.bridge.ReactApplicationContext;
