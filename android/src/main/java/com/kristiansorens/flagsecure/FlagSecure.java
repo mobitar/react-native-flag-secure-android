@@ -4,6 +4,11 @@
 package com.kristiansorens.flagsecure;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.view.WindowManager;
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -29,7 +34,10 @@ public class FlagSecure extends ReactContextBaseJavaModule {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+                    // See https://stackoverflow.com/a/11121897/458960
+                    if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+                        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+                    }
                 }
             });
         }
