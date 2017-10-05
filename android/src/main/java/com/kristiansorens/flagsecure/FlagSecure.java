@@ -12,9 +12,14 @@ import com.facebook.react.bridge.ReactMethod;
 
 public class FlagSecure extends ReactContextBaseJavaModule {
 
+    public static FlagSecure instance;
+
     public FlagSecure(ReactApplicationContext reactContext) {
         super(reactContext);
+        instance = this;
     }
+
+    public boolean enabled = false;
 
     @Override
     public String getName() {
@@ -23,6 +28,8 @@ public class FlagSecure extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void activate() {
+        enabled = true;
+
         final Activity activity = getCurrentActivity();
 
         if (activity != null) {
@@ -40,6 +47,8 @@ public class FlagSecure extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void deactivate() {
+        enabled = false;
+
         final Activity activity = getCurrentActivity();
 
         if (activity != null) {
